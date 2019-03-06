@@ -100,7 +100,7 @@ public class IOtask2RunTrial {
 		
 		int nPoints = IOtask2BlockContext.getTotalPoints();
 		
-		int nPence = nPoints / 2;
+		int nPence = (int) Math.ceil( (float) nPoints / 4);
 		int nPounds = nPence / 100;
 		int nRemainderPence = nPence % 100;
 		
@@ -403,7 +403,7 @@ public class IOtask2RunTrial {
 							public void run() {
 								int nPoints = IOtask2BlockContext.getTotalPoints();
 								
-								int nPence = nPoints / 2;
+								int nPence = (int) Math.ceil( (float) nPoints / 4);
 								int nPounds = nPence / 100;
 								int nRemainderPence = nPence % 100;
 								

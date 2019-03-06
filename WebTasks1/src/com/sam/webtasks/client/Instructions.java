@@ -11,7 +11,7 @@ public class Instructions {
 		case 0:
 			i = "In this experiment you will have a simple task to do.<br><br>"
 					+ "You will see several yellow circles inside a box. Inside each circle will be a number. <br><br>"
-					+ "You can move them around using your mouse. Your task is to drag them to the bottom of the box in sequence.<br><br>"
+					+ "You can move them around with your finger. Your task is to drag them to the bottom of the box in sequence.<br><br>"
 					+ " Please start by dragging 1 all the way to the bottom. This will make it disappear. <br><br>"
 					+ "Then drag 2 to the bottom, then 3, and so on.";
 			break;
@@ -50,7 +50,7 @@ public class Instructions {
 					+ "The <b>" + highVal + "</b> circles are worth more than the <b>" + lowVal
 					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
 					+ " you will score <b>10</b> points. But you will only score <b>1</b> point for dragging a <b>" + lowVal + "</b> circle "
-					+ "to the " + lowValLoc + "<br><br>These points are worth real money. At the end of the experiment, "
+					+ "to the " + lowValLoc + ".<br><br>These points are worth real money. At the end of the experiment, "
 					+ "you will be paid £???? for every ???? points you have scored.<br><br>Click below to continue.";
 			break;
 
