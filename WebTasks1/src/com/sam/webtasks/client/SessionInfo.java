@@ -10,7 +10,7 @@ public class SessionInfo {
 	public static boolean runInfoConsentPages=false; //should we do the info and consent pages?
 	
 	//what is the name for this experiment?
-	public static String experimentCode="testExp";
+	public static String experimentCode="QZ1";
 	
 	//which version of the experiment is this?
 	public static int experimentVersion=1;
@@ -36,15 +36,12 @@ public class SessionInfo {
 	//if you want to specify the level of any of those factors, set it with specifiedLevels. otherwise set to -1
 	//e.g. specifiedLevels = {-1, 2, -1}; would randomise factors 1 and 3, and set the second factor to level 2
 	//NB levels range from 0 to (maximum - 1)
-	public static String[] counterbalanceFactors = {"forcedOrder", "buttonPositions", "buttonColours", "practiceDifficulty", "feedbackValence"};
-	public static int[] counterbalanceLevels = {2,2,2,2,2};
-	public static int[] specifiedLevels = {-1,-1,-1,-1,-1};
+	public static String[] counterbalanceFactors = {"colourMeaning", "conditionOrder"};
+	public static int[] counterbalanceLevels = {2,2};
+	public static int[] specifiedLevels = {-1,-1};
 	
-	//forcedOrder: is the first forced trial internal or external?
-	//buttonPositions: assignment of own memory / reminder buttons to left / right
-	//buttonColours: assignment of buttons to pink / green colours
-	//initialDifficulty: number of targets during initial practice
-	//feedbackValence: positive / negative feedback after each trial
+	//colourMeaning: which colour is associated with high reward?
+	//conditionOrder: is offloading allowed first or second?
 	
 	/*************************************************/
     /* no need to edit the settings below this point */

@@ -18,14 +18,22 @@ public class Names {
 	public final static int ELIGIBILITY_NEVERCOMPLETED=1; //can only take part if you haven't completed the experiment
 	public final static int ELIGIBILITY_NEVERACCESSED=2;  //can only take part if you haven't accessed the task
 	
+	//colourMeaning
+	public final static int BLUElowPINKhigh=0;
+	public final static int BLUEhighPINKlow=1;
+	
+	//condition order
+	public final static int OFFLOAD_FIRST=0;
+	public final static int OFFLOAD_SECOND=1;
+	
 	//feedback valence
 	public final static int FEEDBACK_POSITIVE=0;
 	public final static int FEEDBACK_NEGATIVE=1;
-	
+		
 	//initial practice difficulty
 	public final static int PRACTICE_EASY=0;
 	public final static int PRACTICE_DIFFICULT=1;
-	
+		
 	//what stimuli are inside the circles?
 	public final static int ONGOING_STIM_NUMBERS=0;
 	public final static int ONGOING_STIM_LETTERS=1;
