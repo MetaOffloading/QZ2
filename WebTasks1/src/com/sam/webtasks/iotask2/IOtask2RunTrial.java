@@ -98,7 +98,23 @@ public class IOtask2RunTrial {
 		pointsWrapper.setWidth(boxSize + "px");
 		pointsWrapper.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
-		final HTML pointsDisplay = new HTML("You have scored " + IOtask2BlockContext.getTotalPoints() + " points");
+		int nPoints = IOtask2BlockContext.getTotalPoints();
+		
+		int nPence = nPoints / 2;
+		int nPounds = nPence / 100;
+		int nRemainderPence = nPence % 100;
+		
+		String money = "£" + nPounds + ".";
+		
+		if (nRemainderPence < 10) {
+			money = money + "0" + nRemainderPence;
+		} else {
+			money = money + nRemainderPence;
+		}
+		
+		final HTML pointsDisplay = new HTML("You have scored " + nPoints + " points (" + money + ")");
+		
+	
 		pointsDisplay.setStyleName("livePointsDisplay");
 		pointsWrapper.add(pointsDisplay);
 		
@@ -385,7 +401,21 @@ public class IOtask2RunTrial {
 					if ((IOtask2BlockContext.getExitFlag() > 0) & (IOtask2BlockContext.getClickedCircle() == IOtask2BlockContext.getNextCircle())) {
 						new Timer() {
 							public void run() {
-								pointsDisplay.setHTML("You have scored " + IOtask2BlockContext.getTotalPoints() + " points");
+								int nPoints = IOtask2BlockContext.getTotalPoints();
+								
+								int nPence = nPoints / 2;
+								int nPounds = nPence / 100;
+								int nRemainderPence = nPence % 100;
+								
+								String money = "£" + nPounds + ".";
+								
+								if (nRemainderPence < 10) {
+									money = money + "0" + nRemainderPence;
+								} else {
+									money = money + nRemainderPence;
+								}
+								
+								pointsDisplay.setHTML("You have scored " + nPoints + " points (" + money + ")");
 							}
 						}.schedule(10);
 						

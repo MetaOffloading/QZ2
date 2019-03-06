@@ -19,8 +19,8 @@ public class Names {
 	public final static int ELIGIBILITY_NEVERACCESSED=2;  //can only take part if you haven't accessed the task
 	
 	//colourMeaning
-	public final static int BLUElowPINKhigh=0;
-	public final static int BLUEhighPINKlow=1;
+	public final static int BLUE_HIGHVAL=0;
+	public final static int PINK_HIGHVAL=1;
 	
 	//condition order
 	public final static int OFFLOAD_FIRST=0;
