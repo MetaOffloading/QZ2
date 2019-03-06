@@ -47,9 +47,9 @@ public class Instructions {
 			}
 
 			i = "From now on, you will score points every time you drag one of the special circles to the correct location.<br><br>"
-					+ "The " + highVal + " circles are worth more than the " + lowVal
-					+ " circles. Every time you drag a " + highVal + " circle to the " + highValLoc
-					+ " you will score 10 points. But you will only score 1 point for dragging a " + lowVal + " circle "
+					+ "The <b>" + highVal + "</b> circles are worth more than the <b>" + lowVal
+					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
+					+ " you will score <b>10</b> points. But you will only score <b>1</b> point for dragging a <b>" + lowVal + "</b> circle "
 					+ "to the " + lowValLoc + "<br><br>These points are worth real money. At the end of the experiment, "
 					+ "you will be paid £???? for every ???? points you have scored.<br><br>Click below to continue.";
 			break;

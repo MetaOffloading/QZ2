@@ -84,7 +84,7 @@ public class SequenceHandler {
 				IOtask2Block block2 = new IOtask2Block();
 				block2.blockNum=2;
 				block2.totalCircles=8;
-				block2.nTargets=2;
+				block2.nTargets=1;
 				block2.nTrials=1;
 				block2.variablePoints = true;
 				block2.pointValues = new int[] {0,1,1,0};
@@ -248,7 +248,7 @@ public class SequenceHandler {
 					block8.pointValues = new int[] {0,1,10,0}; 
 				}
 				
-				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
+				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block8.offloadCondition = Names.REMINDERS_OPTIONAL;
 				} else {
 					block8.offloadCondition = Names.REMINDERS_NOTALLOWED;
