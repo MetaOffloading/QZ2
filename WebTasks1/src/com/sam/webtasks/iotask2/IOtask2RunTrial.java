@@ -97,24 +97,9 @@ public class IOtask2RunTrial {
 		final VerticalPanel pointsWrapper = new VerticalPanel();
 		pointsWrapper.setWidth(boxSize + "px");
 		pointsWrapper.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+
+		final HTML pointsDisplay = new HTML("You have scored " + IOtask2BlockContext.getTotalPoints() + " points (" + IOtask2BlockContext.getMoneyString() + ")");
 		
-		int nPoints = IOtask2BlockContext.getTotalPoints();
-		
-		int nPence = (int) Math.ceil( (float) nPoints / 4);
-		int nPounds = nPence / 100;
-		int nRemainderPence = nPence % 100;
-		
-		String money = "£" + nPounds + ".";
-		
-		if (nRemainderPence < 10) {
-			money = money + "0" + nRemainderPence;
-		} else {
-			money = money + nRemainderPence;
-		}
-		
-		final HTML pointsDisplay = new HTML("You have scored " + nPoints + " points (" + money + ")");
-		
-	
 		pointsDisplay.setStyleName("livePointsDisplay");
 		pointsWrapper.add(pointsDisplay);
 		
@@ -248,8 +233,12 @@ public class IOtask2RunTrial {
 					// reset the exit flag. This is used to prevent multiple attempts to drag circle out of box when it reaches edge
 					IOtask2BlockContext.setExitFlag(0);
 
-					//TODO this is where a date should be created if we are going to time the duration of each dtag
+					//TODO this is where a date should be created if we are going to time the duration of each drag
 
+					//store identity of the clicked circle
+					IOtask2BlockContext.setClickedCircle(finalc);
+					
+					/*
 					DragContext dC = event.getDragContext();
 
 					// figure out which circle was clicked for (int c = 0; c < nCircles; c++) {
@@ -260,14 +249,16 @@ public class IOtask2RunTrial {
 						if (Math.pow(yDist, 2) <= Math.pow(circleRadius, 2)) {
 							IOtask2BlockContext.setClickedCircle(finalc);
 						}
-					}
+					} */
 				}
 			});
 
 			circleGroup[c].addNodeDragMoveHandler(new NodeDragMoveHandler() {
 				@Override
 				public void onNodeDragMove(NodeDragMoveEvent event) {
-					if (IOtask2BlockContext.getClickedCircle() == IOtask2BlockContext.getReminderFlag()) {
+					final int clickedCircle = IOtask2BlockContext.getClickedCircle();
+					
+					if (clickedCircle == IOtask2BlockContext.getReminderFlag()) {
 						IOtask2BlockContext.setReminderFlag(-1);
 
 						if (IOtask2BlockContext.getReminderFlag() == IOtask2BlockContext.getBackupReminderFlag()) {
@@ -275,7 +266,7 @@ public class IOtask2RunTrial {
 						}
 					}
 
-					if (IOtask2BlockContext.getClickedCircle() == IOtask2BlockContext.getBackupReminderFlag()) {
+					if (clickedCircle == IOtask2BlockContext.getBackupReminderFlag()) {
 						IOtask2BlockContext.setBackupReminderFlag(-1);
 					}
 
@@ -298,7 +289,7 @@ public class IOtask2RunTrial {
 					if (IOtask2BlockContext.getExitFlag() > 0) {
 						DragContext dC = event.getDragContext();
 
-						if ((IOtask2BlockContext.getClickedCircle() == IOtask2BlockContext.getNextCircle()) && ((IOtask2BlockContext.getReminderFlag() == -1)
+						if ((clickedCircle == IOtask2BlockContext.getNextCircle()) && ((IOtask2BlockContext.getReminderFlag() == -1)
 						|| ((IOtask2BlockContext.getCompletedCircles() - IOtask2BlockContext.getReminderCompletedCircles()) < 1))) {
 							
 							if (IOtask2BlockContext.getCheckExitFlag() == 1) {
@@ -308,28 +299,30 @@ public class IOtask2RunTrial {
 								IOtask2BlockContext.setBackupReminderFlag(-1);
 								IOtask2BlockContext.setCheckExitFlag(0);
 
-								int circleNum = IOtask2BlockContext.getClickedCircle() + IOtask2BlockContext.getCircleAdjust();
+								int circleNum = clickedCircle + IOtask2BlockContext.getCircleAdjust();
 
 								if (IOtask2BlockContext.getExitFlag() == IOtask2BlockContext.getTargetSide(circleNum)) {
 									IOtask2BlockContext.incrementHits();
-									circles[IOtask2BlockContext.getClickedCircle()].setFillColor(ColorName.GREENYELLOW);
+									circles[clickedCircle].setFillColor(ColorName.GREENYELLOW);
 								} else if (IOtask2BlockContext.getExitFlag() < 4) { // incorrect target response
-									circles[IOtask2BlockContext.getClickedCircle()].setFillColor(ColorName.RED);
+									circles[clickedCircle].setFillColor(ColorName.RED);
 								} else { // ongoing response
 									// circles[clickedCircle].setFillColor(ColorName.PURPLE);
 								}
 
-								circleText[IOtask2BlockContext.getClickedCircle()].setVisible(false);
+								circleText[clickedCircle].setVisible(false);
 
 								circleLayer.draw();
 							}
 						} else {
 							if (IOtask2BlockContext.getFlashFlag() == false) {
 								//flash a circle to indicate the participant has done something wrong
-								if (IOtask2BlockContext.getClickedCircle() != IOtask2BlockContext.getNextCircle()) {
+								if (clickedCircle != IOtask2BlockContext.getNextCircle()) {
 									circles[IOtask2BlockContext.getNextCircle()].setFillColor(ColorName.RED);
 								} else {
-									circles[IOtask2BlockContext.getReminderFlag()].setFillColor(ColorName.WHITE);
+									if (IOtask2BlockContext.getReminderFlag()>-1) {
+										circles[IOtask2BlockContext.getReminderFlag()].setFillColor(ColorName.WHITE);
+									}
 								}
 
 								circleLayer.draw();
@@ -338,8 +331,11 @@ public class IOtask2RunTrial {
 								new Timer() {
 									public void run() {
 										circles[IOtask2BlockContext.getNextCircle()].setFillColor(IOtask2DisplayParams.circleColours[0]);
-										circles[IOtask2BlockContext.getReminderFlag()].setFillColor(IOtask2DisplayParams.circleColours[0]);
-										circleLayer.draw();
+										
+										if (IOtask2BlockContext.getReminderFlag()>-1) {
+											circles[IOtask2BlockContext.getReminderFlag()].setFillColor(IOtask2DisplayParams.circleColours[0]);
+										}
+ 										circleLayer.draw();
 									}
 								}.schedule(400);
 
@@ -355,12 +351,14 @@ public class IOtask2RunTrial {
 			circleGroup[c].addNodeDragEndHandler((NodeDragEndHandler) new NodeDragEndHandler() {
 				@Override
 				public void onNodeDragEnd(NodeDragEndEvent event) {
+					final int clickedCircle = IOtask2BlockContext.getClickedCircle();
+
 					if (IOtask2BlockContext.getLogDragData()) {
-						int circleNum = IOtask2BlockContext.getClickedCircle() + IOtask2BlockContext.getCircleAdjust();
+						int circleNum = clickedCircle + IOtask2BlockContext.getCircleAdjust();
 						
-						String data = "" + circleNum + ",";
+						String data = "" + IOtask2BlockContext.getBlockNum() + "," + circleNum + ",";
 						data = data + IOtask2BlockContext.getTargetSide(circleNum) + ",";
-						data = data + IOtask2BlockContext.getNextCircle() + IOtask2BlockContext.getCircleAdjust() + ",";
+						data = data + (IOtask2BlockContext.getNextCircle() + IOtask2BlockContext.getCircleAdjust()) + ",";
 						data = data + IOtask2BlockContext.getExitFlag();
 						
 						PHP.logData("dragEnd", data, false);
@@ -376,8 +374,9 @@ public class IOtask2RunTrial {
 
 					IOtask2BlockContext.setFlashFlag(false);
 
+					//do the reminder lockout if applicable
 					if (IOtask2BlockContext.getReminderLockout()) {
-						if ((IOtask2BlockContext.getExitFlag() == 0) & (IOtask2BlockContext.getClickedCircle() != IOtask2BlockContext.getNextCircle())) {
+						if ((IOtask2BlockContext.getExitFlag() == 0) & (clickedCircle != IOtask2BlockContext.getNextCircle())) {
 							for (int c = 0; c < IOtask2BlockContext.getnCircles(); c++) {
 								circleGroup[c].setDraggable(false);
 								circles[c].setAlpha(0.3);
@@ -398,24 +397,10 @@ public class IOtask2RunTrial {
 						}
 					}
 
-					if ((IOtask2BlockContext.getExitFlag() > 0) & (IOtask2BlockContext.getClickedCircle() == IOtask2BlockContext.getNextCircle())) {
+					if ((IOtask2BlockContext.getExitFlag() > 0) & (clickedCircle == IOtask2BlockContext.getNextCircle())) {		
 						new Timer() {
-							public void run() {
-								int nPoints = IOtask2BlockContext.getTotalPoints();
-								
-								int nPence = (int) Math.ceil( (float) nPoints / 4);
-								int nPounds = nPence / 100;
-								int nRemainderPence = nPence % 100;
-								
-								String money = "£" + nPounds + ".";
-								
-								if (nRemainderPence < 10) {
-									money = money + "0" + nRemainderPence;
-								} else {
-									money = money + nRemainderPence;
-								}
-								
-								pointsDisplay.setHTML("You have scored " + nPoints + " points (" + money + ")");
+							public void run() {				
+								pointsDisplay.setHTML("You have scored " + IOtask2BlockContext.getTotalPoints() + " points (" + IOtask2BlockContext.getMoneyString() + ")");
 							}
 						}.schedule(10);
 						
@@ -425,19 +410,18 @@ public class IOtask2RunTrial {
 							IOtask2BlockContext.doCircleAdjustment();
 						}
 						
-						IAnimationHandle handle = circles[IOtask2BlockContext.getClickedCircle()].animate(AnimationTweener.LINEAR, shrink, 200);
+						IAnimationHandle handle = circles[clickedCircle].animate(AnimationTweener.LINEAR, shrink, 200);
 
 						if ((IOtask2BlockContext.getTotalCircles() - IOtask2BlockContext.getCompletedCircles()) >= IOtask2BlockContext.getnCircles()) { // more circles to add on screen
-							final int clickedCircleFinal = IOtask2BlockContext.getClickedCircle();
 							final int newCircle = IOtask2BlockContext.getCompletedCircles() + IOtask2BlockContext.getnCircles() - 1;	
 							
 							if (IOtask2BlockContext.getTargetSide(newCircle)>0) { //new circle is a target
 								if (IOtask2BlockContext.getOffloadCondition() == Names.REMINDERS_MANDATORY_TARGETONLY) {
-									IOtask2BlockContext.setBackupReminderFlag(clickedCircleFinal);
+									IOtask2BlockContext.setBackupReminderFlag(clickedCircle);
 									IOtask2BlockContext.setBackupCompletedCircles(IOtask2BlockContext.getCompletedCircles());
 									
 									if ((IOtask2BlockContext.getCompletedCircles() - IOtask2BlockContext.getReminderCompletedCircles()) > 1) {
-										IOtask2BlockContext.setReminderFlag(IOtask2BlockContext.getClickedCircle());
+										IOtask2BlockContext.setReminderFlag(clickedCircle);
 										IOtask2BlockContext.setReminderCompletedCircles(IOtask2BlockContext.getCompletedCircles());
 									}
 								}
@@ -447,26 +431,26 @@ public class IOtask2RunTrial {
 								public void run() {
 									int targetStatus = IOtask2BlockContext.getTargetSide(newCircle);
 									
-									circles[IOtask2BlockContext.getClickedCircle()].setFillColor(IOtask2DisplayParams.circleColours[targetStatus]);
-									circleGroup[clickedCircleFinal].setX(circleXref[clickedCircleFinal]);
-									circleGroup[clickedCircleFinal].setY(circleYref[clickedCircleFinal]);
+									circles[clickedCircle].setFillColor(IOtask2DisplayParams.circleColours[targetStatus]);
+									circleGroup[clickedCircle].setX(circleXref[clickedCircle]);
+									circleGroup[clickedCircle].setY(circleYref[clickedCircle]);
 
 									if (IOtask2BlockContext.getOffloadCondition() == Names.REMINDERS_NOTALLOWED) {
-										circleGroup[clickedCircleFinal].setDraggable(false);
+										circleGroup[clickedCircle].setDraggable(false);
 									}
 
 									AnimationProperties grow = new AnimationProperties();
 									grow.push(Properties.SCALE(1));
 									
-									IAnimationHandle handle = circles[clickedCircleFinal].animate(AnimationTweener.LINEAR, grow, 200);
+									IAnimationHandle handle = circles[clickedCircle].animate(AnimationTweener.LINEAR, grow, 200);
 								}
 							}.schedule(300);
 
 							new Timer() {
 								public void run() {
-									circleText[clickedCircleFinal].setText(labels[newCircle]);
+									circleText[clickedCircle].setText(labels[newCircle]);
 
-									circleText[clickedCircleFinal].setVisible(true);
+									circleText[clickedCircle].setVisible(true);
 
 									circleLayer.draw();
 								}
@@ -499,7 +483,7 @@ public class IOtask2RunTrial {
 
 											Color newColor = new Color(R, G, B);
 
-											circles[clickedCircleFinal].setFillColor(newColor);
+											circles[clickedCircle].setFillColor(newColor);
 											circleLayer.draw();
 										}
 
@@ -508,7 +492,7 @@ public class IOtask2RunTrial {
 										}
 									};
 
-									IAnimationHandle handle = circles[clickedCircleFinal].animate(null, null, 400, callback);
+									IAnimationHandle handle = circles[clickedCircle].animate(null, null, 400, callback);
 								}
 							}.schedule(IOtask2BlockContext.getInstructionTime());
 						}

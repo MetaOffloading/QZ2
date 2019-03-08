@@ -22,9 +22,13 @@ public class Initialise {
 
 		//get participant ID from query line
 		SessionInfo.participantID = Window.Location.getParameter("workerId");
-		
+
 		if (SessionInfo.participantID == null) {
 			SessionInfo.participantID = "null";
+		}
+		
+		if (SessionInfo.checkID==false) {
+			SessionInfo.participantID = "Atest";
 		}
 		
 		//generate a reward code, which can be used to claim payment at end

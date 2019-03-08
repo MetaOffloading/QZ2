@@ -8,12 +8,13 @@ public class SessionInfo {
 	//are we just testing locally? set this to true if so and it won't try to log data to the database
 	public static boolean localTesting=true;
 	public static boolean runInfoConsentPages=false; //should we do the info and consent pages?
+	public static boolean checkID=false; //should we check the worker ID? if not, it defaults to "Atest"
 	
 	//what is the name for this experiment?
 	public static String experimentCode="QZ1";
 	
 	//which version of the experiment is this?
-	public static int experimentVersion=1;
+	public static int experimentVersion=7;
 	
 	//what is the minimum permitted screen size in pixels?
 	//if the screen is smaller than this the participant will be asked
@@ -25,7 +26,7 @@ public class SessionInfo {
 	//Names.NEVERACCESSED = anyone who has not yet started the experiment
 	//Names.NEVERCOMPLETED = anyone who has not yet completed the experiment,
 	//i.e. you can start again as long as you didn't get to the very end	
-	public static int eligibility=Names.ELIGIBILITY_NEVERCOMPLETED;
+	public static int eligibility=Names.ELIGIBILITY_ANYONE;
 	public static boolean newParticipantsOnly=false; //restrict eligibility to participants who have never completed any of your experiments?
 	
 	//what factors do we need to counterbalance?

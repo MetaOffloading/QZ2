@@ -31,6 +31,25 @@ public class IOtask2BlockContext {
 		return (blockContext.totalPoints);
 	}
 	
+	// find out the amount of money earned
+	public static String getMoneyString() {
+		int nPoints = blockContext.totalPoints;
+		
+		int nPence = (int) Math.ceil( (float) nPoints / 2.5);
+		int nPounds = nPence / 100;
+		int nRemainderPence = nPence % 100;
+		
+		String money = "£" + nPounds + ".";
+		
+		if (nRemainderPence < 10) {
+			money = money + "0" + nRemainderPence;
+		} else {
+			money = money + nRemainderPence;
+		}
+		
+		return (money);
+	}
+	
 	// are we logging drag data?
 	public static boolean getLogDragData() {
 		return (blockContext.logDragData);

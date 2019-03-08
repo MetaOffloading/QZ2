@@ -59,10 +59,13 @@ public class SequenceHandler {
 			 * The code here defines the main sequence of events in the experiment *
 			 ********************************************************************/
 			case 1:
+				Window.alert("Experiment: " + SessionInfo.experimentCode + ", version: " + SessionInfo.experimentVersion);
+				
 				ClickPage.Run(Instructions.Get(0),  "Next");
 				break;		
 			case 2:	
 				IOtask2Block block1 = new IOtask2Block();
+				block1.logDragData=true; //log trial-by-trial data to the database
 				block1.blockNum=1;
 				block1.totalCircles=8;
 				block1.nTargets=0;
@@ -82,6 +85,7 @@ public class SequenceHandler {
 			    break;	
 			case 4:
 				IOtask2Block block2 = new IOtask2Block();
+				block2.logDragData=true; //log trial-by-trial data to the database
 				block2.blockNum=2;
 				block2.totalCircles=8;
 				block2.nTargets=1;
@@ -104,6 +108,7 @@ public class SequenceHandler {
 				break;			
 			case 7:// need add feedback 
 				IOtask2Block block3 = new IOtask2Block();
+				block3.logDragData=true; //log trial-by-trial data to the database
 				block3.blockNum=3;
 				block3.totalCircles=25;
 				block3.nTargets=16;	
@@ -117,6 +122,7 @@ public class SequenceHandler {
 				break;
 			case 9:
 				IOtask2Block block4 = new IOtask2Block();
+				block4.logDragData=true; //log trial-by-trial data to the database
 				block4.blockNum=4;
 				block4.showLivePoints=true;
 				block4.totalCircles=25;
@@ -141,6 +147,7 @@ public class SequenceHandler {
 				break;
 			case 11:
 				IOtask2Block block5 = new IOtask2Block();
+				block5.logDragData=true; //log trial-by-trial data to the database
 				block5.blockNum = 5;
 				block5.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block5.showLivePoints=true;
@@ -172,6 +179,7 @@ public class SequenceHandler {
 				break;
 			case 13:
 				IOtask2Block block6 = new IOtask2Block();
+				block6.logDragData=true; //log trial-by-trial data to the database
 				block6.blockNum = 6;
 				block6.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block6.showLivePoints=true;
@@ -189,7 +197,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					block6.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block6.reminderLockout = true;
-					block6.reminderLockoutTime = 3000;
+					block6.reminderLockoutTime = 2000;
 				} else {
 					block6.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -201,8 +209,9 @@ public class SequenceHandler {
 				break;
 			case 15:
 				IOtask2Block block7 = new IOtask2Block();
+				block7.logDragData=true; //log trial-by-trial data to the database
 				block7.blockNum = 7;
-				block7.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
+				block7.totalPoints = 500; //start with 500 points (£2)
 				block7.showLivePoints=true;
 				block7.totalCircles=25;
 				block7.nTargets=16;
@@ -218,7 +227,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					block7.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block7.reminderLockout = true;
-					block7.reminderLockoutTime = 3000;
+					block7.reminderLockoutTime = 2000;
 				} else {
 					block7.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -234,6 +243,7 @@ public class SequenceHandler {
 				break;
 			case 17:
 				IOtask2Block block8 = new IOtask2Block();
+				block8.logDragData=true; //log trial-by-trial data to the database
 				block8.blockNum = 8;
 				block8.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block8.showLivePoints=true;
@@ -265,6 +275,7 @@ public class SequenceHandler {
 				break;
 			case 19:
 				IOtask2Block block9 = new IOtask2Block();
+				block9.logDragData=true; //log trial-by-trial data to the database
 				block9.blockNum = 9;
 				block9.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block9.showLivePoints=true;
@@ -282,7 +293,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block9.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block9.reminderLockout = true;
-					block9.reminderLockoutTime = 3000;
+					block9.reminderLockoutTime = 2000;
 				} else {
 					block9.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -291,6 +302,7 @@ public class SequenceHandler {
 				break;
 			case 20:
 				IOtask2Block block10 = new IOtask2Block();
+				block10.logDragData=true; //log trial-by-trial data to the database
 				block10.blockNum = 10;
 				block10.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block10.showLivePoints=true;
@@ -308,7 +320,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block10.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block10.reminderLockout = true;
-					block10.reminderLockoutTime = 3000;
+					block10.reminderLockoutTime = 2000;
 				} else {
 					block10.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -316,6 +328,13 @@ public class SequenceHandler {
 				block10.Run();
 				break;
 			case 21:
+				String data = Counterbalance.getFactorLevel("colourMeaning") + ",";
+				data = data + Counterbalance.getFactorLevel("conditionOrder") + ",";
+				data = data + IOtask2BlockContext.getMoneyString() + ",";
+				data = data + TimeStamp.Now();
+
+				PHP.logData("finish", data, true);
+			case 22:
 				Finish.Run();
 				break;
 				   

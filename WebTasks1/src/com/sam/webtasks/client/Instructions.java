@@ -68,7 +68,8 @@ public class Instructions {
 
 		case 6:
 			i = "Now the experiment will begin for real. The more points you score, the more money you will earn.<br><br>"
-					+ "Click below to start."; 
+					+ "You will start with an initial payment of £2.00 and earn additional money in addition to this."
+					+ " Click below to start."; 
 			break;
 			
 		case 7:
