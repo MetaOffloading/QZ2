@@ -397,7 +397,12 @@ public class IOtask2RunTrial {
 					if (IOtask2BlockContext.getLogDragData()) {
 						int circleNum = clickedCircle + IOtask2BlockContext.getCircleAdjust();
 						
+						if (clickedCircle < (IOtask2BlockContext.getCompletedCircles() % IOtask2BlockContext.getnCircles())) {
+							circleNum += IOtask2BlockContext.getnCircles();
+						}		
+						
 						String data = "" + IOtask2BlockContext.getBlockNum() + "," + circleNum + ",";
+						data = data + IOtask2BlockContext.getTrialNum() + ",";
 						data = data + IOtask2BlockContext.getTargetSide(circleNum) + ",";
 						data = data + (IOtask2BlockContext.getNextCircle() + IOtask2BlockContext.getCircleAdjust()) + ",";
 						data = data + IOtask2BlockContext.getExitFlag();
