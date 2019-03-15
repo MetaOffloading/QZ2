@@ -108,8 +108,27 @@ public class IOtask2RunTrial {
 		}
 		
 		lienzoWrapper.add(panel);	
+		
+		final HorizontalPanel lienzoWrapperWrapper = new HorizontalPanel();
+		
+		lienzoWrapperWrapper.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		
+		final HTML leftPoints = new HTML("");
+		final HTML rightPoints = new HTML("");
+		
+		if (block.showPointLabels) {
+			leftPoints.setHTML("+" + block.pointValues[1]);
+			rightPoints.setHTML("+" + block.pointValues[2]);
+			leftPoints.addStyleName("pointHTML");
+			rightPoints.addStyleName("pointHTML");
+		}
+		
+		lienzoWrapperWrapper.add(leftPoints);
+		lienzoWrapperWrapper.add(lienzoWrapper);
+		lienzoWrapperWrapper.add(rightPoints);
 
-		verticalPanel.add(lienzoWrapper);
+		verticalPanel.add(lienzoWrapperWrapper);
+
 		
 		RootPanel.get().add(verticalPanel);
 
@@ -304,6 +323,28 @@ public class IOtask2RunTrial {
 								if (IOtask2BlockContext.getExitFlag() == IOtask2BlockContext.getTargetSide(circleNum)) {
 									IOtask2BlockContext.incrementHits();
 									circles[clickedCircle].setFillColor(ColorName.GREENYELLOW);
+									
+									if (IOtask2BlockContext.getShowPointLabels()) {
+										if (IOtask2BlockContext.getExitFlag() == 1) {
+											leftPoints.addStyleName("greenyellow");
+											
+											new Timer() {
+												public void run() {
+													leftPoints.removeStyleName("greenyellow");
+												}
+											}.schedule(150);		
+										}
+										
+										if (IOtask2BlockContext.getExitFlag() == 2) {
+											rightPoints.addStyleName("greenyellow");
+											
+											new Timer() {
+												public void run() {
+													rightPoints.removeStyleName("greenyellow");
+												}
+											}.schedule(150);		
+										}
+									}
 								} else if (IOtask2BlockContext.getExitFlag() < 4) { // incorrect target response
 									circles[clickedCircle].setFillColor(ColorName.RED);
 								} else { // ongoing response

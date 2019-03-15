@@ -25,7 +25,7 @@ public class Instructions {
 			break;
 
 		case 2:
-			i = "Now it will get more difficult. There will be a total of 25 circles, and 16 of them will be special ones that should go to one of the coloured sides of the box.<br><br>"
+			i = "Now it will get more difficult. There will be a total of " + Params.totalCircles + " circles, and " + Params.nTargets + " of them will be special ones that should go to one of the coloured sides of the box.<br><br>"
 					+ "Don't worry if you do not remember all of them. That's fine-just try to remember as many as you can.";
 			break;
 			
@@ -51,7 +51,8 @@ public class Instructions {
 					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
 					+ " you will score <b>10</b> points. But you will only score <b>1</b> point for dragging a <b>" + lowVal + "</b> circle "
 					+ "to the " + lowValLoc + ".<br><br>These points are worth real money. At the end of the experiment, "
-					+ "you will be paid £???? for every ???? points you have scored.<br><br>Click below to continue.";
+					+ "you will be paid a bonus of £1 for every 500 points you have"
+					+ " scored. The maximum bonus is more than £7 if you remember all the circles. <br><br>Click below to continue.";
 			break;
 
 		case 4:
@@ -68,7 +69,7 @@ public class Instructions {
 
 		case 6:
 			i = "Now the experiment will begin for real. The more points you score, the more money you will earn.<br><br>"
-					+ "You will start with an initial payment of £2.00 and earn additional money in addition to this."
+					+ "You will start with an initial payment of £3.00 and earn additional money in addition to this."
 					+ " Click below to start."; 
 			break;
 			

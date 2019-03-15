@@ -31,11 +31,15 @@ public class IOtask2BlockContext {
 		return (blockContext.totalPoints);
 	}
 	
+	public static boolean getShowPointLabels() {
+		return (blockContext.showPointLabels);
+	}
+	
 	// find out the amount of money earned
 	public static String getMoneyString() {
 		int nPoints = blockContext.totalPoints;
 		
-		int nPence = (int) Math.ceil( (float) nPoints / 2.5);
+		int nPence = (int) Math.ceil( (float) nPoints / 5);
 		int nPounds = nPence / 100;
 		int nRemainderPence = nPence % 100;
 		

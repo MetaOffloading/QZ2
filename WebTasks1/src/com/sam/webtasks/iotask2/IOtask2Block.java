@@ -76,6 +76,9 @@ public class IOtask2Block {
 	// tell participants how many points they've scored at each PreTrial screen?
 	public boolean showPoints = true;
 	
+	//show point values on either side
+	public boolean showPointLabels = false;
+	
 	// tell points how many points they've scored as they perform the task?
 	public boolean showLivePoints = false;
 

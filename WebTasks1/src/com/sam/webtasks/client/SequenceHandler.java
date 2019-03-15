@@ -59,8 +59,6 @@ public class SequenceHandler {
 			 * The code here defines the main sequence of events in the experiment *
 			 ********************************************************************/
 			case 1:
-				Window.alert("Experiment: " + SessionInfo.experimentCode + ", version: " + SessionInfo.experimentVersion);
-				
 				ClickPage.Run(Instructions.Get(0),  "Next");
 				break;		
 			case 2:	
@@ -69,10 +67,10 @@ public class SequenceHandler {
 				block1.blockNum=1;
 				block1.totalCircles=8;
 				block1.nTargets=0;
-				block1.nTrials=1;
+				block1.nTrials=1;		
 				//different coloured circles can be worth different numbers of points
 				block1.variablePoints = true;
-				
+
 				//points associated with bottom, left, right, and top corners of the box
 				//if the left, right, or top is set to zero points it will be shown in black
 				//and no targets will be assigned to that side
@@ -110,8 +108,8 @@ public class SequenceHandler {
 				IOtask2Block block3 = new IOtask2Block();
 				block3.logDragData=true; //log trial-by-trial data to the database
 				block3.blockNum=3;
-				block3.totalCircles=25;
-				block3.nTargets=16;	
+				block3.totalCircles=Params.totalCircles;
+				block3.nTargets=Params.nTargets;	
 				block3.nTrials=1;
 				block3.variablePoints = true;
 				block3.pointValues = new int[] {0,1,1,0};
@@ -125,8 +123,9 @@ public class SequenceHandler {
 				block4.logDragData=true; //log trial-by-trial data to the database
 				block4.blockNum=4;
 				block4.showLivePoints=true;
-				block4.totalCircles=25;
-				block4.nTargets=16;
+				block4.showPointLabels = true;
+				block4.totalCircles=Params.totalCircles;
+				block4.nTargets=Params.nTargets;
 				block4.nTrials=1;
 				block4.variablePoints = true;
 				
@@ -151,8 +150,9 @@ public class SequenceHandler {
 				block5.blockNum = 5;
 				block5.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block5.showLivePoints=true;
-				block5.totalCircles=25;
-				block5.nTargets=16;
+				block5.showPointLabels = true;
+				block5.totalCircles=Params.totalCircles;
+				block5.nTargets=Params.nTargets;
 				block5.nTrials=1;
 				block5.variablePoints = true;
 				
@@ -183,8 +183,9 @@ public class SequenceHandler {
 				block6.blockNum = 6;
 				block6.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block6.showLivePoints=true;
-				block6.totalCircles=25;
-				block6.nTargets=16;
+				block6.showPointLabels = true;
+				block6.totalCircles=Params.totalCircles;
+				block6.nTargets=Params.nTargets;
 				block6.nTrials=1;
 				block6.variablePoints = true;
 				
@@ -197,7 +198,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					block6.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block6.reminderLockout = true;
-					block6.reminderLockoutTime = 2000;
+					block6.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block6.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -211,11 +212,12 @@ public class SequenceHandler {
 				IOtask2Block block7 = new IOtask2Block();
 				block7.logDragData=true; //log trial-by-trial data to the database
 				block7.blockNum = 7;
-				block7.totalPoints = 500; //start with 500 points (£2)
+				block7.totalPoints = 1500; //start with 1500 points (£3)
 				block7.showLivePoints=true;
-				block7.totalCircles=25;
-				block7.nTargets=16;
-				block7.nTrials=10;
+				block7.showPointLabels = true;
+				block7.totalCircles=Params.totalCircles;
+				block7.nTargets=Params.nTargets;
+				block7.nTrials=Params.nTrials;
 				block7.variablePoints = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
@@ -227,7 +229,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					block7.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block7.reminderLockout = true;
-					block7.reminderLockoutTime = 2000;
+					block7.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block7.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -247,8 +249,9 @@ public class SequenceHandler {
 				block8.blockNum = 8;
 				block8.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block8.showLivePoints=true;
-				block8.totalCircles=25;
-				block8.nTargets=16;
+				block8.showPointLabels = true;
+				block8.totalCircles=Params.totalCircles;
+				block8.nTargets=Params.nTargets;
 				block8.nTrials=1;
 				block8.variablePoints = true;
 				
@@ -279,8 +282,9 @@ public class SequenceHandler {
 				block9.blockNum = 9;
 				block9.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block9.showLivePoints=true;
-				block9.totalCircles=25;
-				block9.nTargets=16;
+				block9.showPointLabels = true;
+				block9.totalCircles=Params.totalCircles;
+				block9.nTargets=Params.nTargets;
 				block9.nTrials=1;
 				block9.variablePoints = true;
 				
@@ -293,7 +297,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block9.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block9.reminderLockout = true;
-					block9.reminderLockoutTime = 2000;
+					block9.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block9.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -306,9 +310,10 @@ public class SequenceHandler {
 				block10.blockNum = 10;
 				block10.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
 				block10.showLivePoints=true;
-				block10.totalCircles=25;
-				block10.nTargets=16;
-				block10.nTrials=10;
+				block10.showPointLabels = true;
+				block10.totalCircles=Params.totalCircles;
+				block10.nTargets=Params.nTargets;
+				block10.nTrials=Params.nTrials;
 				block10.variablePoints = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
@@ -320,7 +325,7 @@ public class SequenceHandler {
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block10.offloadCondition = Names.REMINDERS_OPTIONAL;
 					block10.reminderLockout = true;
-					block10.reminderLockoutTime = 2000;
+					block10.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block10.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -334,6 +339,7 @@ public class SequenceHandler {
 				data = data + TimeStamp.Now();
 
 				PHP.logData("finish", data, true);
+				break;
 			case 22:
 				Finish.Run();
 				break;
