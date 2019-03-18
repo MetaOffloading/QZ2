@@ -50,9 +50,9 @@ public class Instructions {
 					+ "The <b>" + highVal + "</b> circles are worth more than the <b>" + lowVal
 					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
 					+ " you will score <b>10</b> points. But you will only score <b>1</b> point for dragging a <b>" + lowVal + "</b> circle "
-					+ "to the " + lowValLoc + ".<br><br>These points are worth real money. At the end of the experiment, "
-					+ "you will be paid a bonus of £1 for every 500 points you have"
-					+ " scored. The maximum bonus is more than £7 if you remember all the circles. <br><br>Click below to continue.";
+					+ "to the " + lowValLoc + ".<br><br>These points are worth real money. Your payment at the end of the experiment "
+					+ "will be based on how many points you score. You will be paid £1 for every 500 points.<br><br>"
+					+ "This means that you can earn over £10 for this experiment if you remember all the circles. <br><br>Click below to continue.";
 			break;
 
 		case 4:

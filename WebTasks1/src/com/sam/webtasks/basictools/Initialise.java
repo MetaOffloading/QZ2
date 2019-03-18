@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sam.webtasks.client.SequenceHandler;
 import com.sam.webtasks.client.SessionInfo;
+import com.sam.webtasks.iotask2.IOtask2BlockContext;
 
 public class Initialise {
 	public static void Run() {
@@ -59,8 +60,17 @@ public class Initialise {
 			public void onClick(ClickEvent event) {
 				if (textBox.getText().length() > 0) {
 					SessionInfo.participantID = textBox.getText();
+					
+					int ID = Integer.parseInt(SessionInfo.participantID);
+					Counterbalance.setCounterbalancingFactors(ID % 4);
+							
+					String data = Counterbalance.getFactorLevel("colourMeaning") + ",";
+					data = data + Counterbalance.getFactorLevel("conditionOrder") + ",";
+					data = data + TimeStamp.Now();
+					
 					RootPanel.get().clear();
-					SequenceHandler.Next();
+					
+					PHP.logData("start", data, true);
 				}
 				
 			}
