@@ -33,6 +33,7 @@ import com.sam.webtasks.basictools.Finish;
 import com.sam.webtasks.basictools.InfoSheet;
 import com.sam.webtasks.basictools.Initialise;
 import com.sam.webtasks.basictools.PHP;
+import com.sam.webtasks.basictools.ProgressBar;
 import com.sam.webtasks.basictools.Slider;
 import com.sam.webtasks.basictools.TimeStamp;
 import com.sam.webtasks.iotask1.IOtask1Block;
@@ -164,6 +165,8 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					block5.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block5.reminderLockout = true;
+					block5.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block5.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -171,13 +174,17 @@ public class SequenceHandler {
 				block5.Run();
 				break;
 			case 12:
-				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
+				SequenceHandler.Next();
+				
+				/*if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					ClickPage.Run(Instructions.Get(5), "Next");
 				} else {
 					SequenceHandler.Next();
-				}
+				}*/
 				break;
 			case 13:
+				SequenceHandler.Next();
+				/*
 				IOtask2Block block6 = new IOtask2Block();
 				block6.logDragData=true; //log trial-by-trial data to the database
 				block6.blockNum = 6;
@@ -203,16 +210,22 @@ public class SequenceHandler {
 					block6.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
 				
-				block6.Run();
+				block6.Run(); */
 				break;
-			case 14:
+			case 14:			
 				ClickPage.Run(Instructions.Get(6), "Next");
 				break;
 			case 15:
+				//add progress bar to screen
+				ProgressBar.Initialise();
+				ProgressBar.Show();
+				ProgressBar.SetProgress(0,  (2*Params.nTrials));
+				Params.progress=0;
+				
 				IOtask2Block block7 = new IOtask2Block();
 				block7.logDragData=true; //log trial-by-trial data to the database
 				block7.blockNum = 7;
-				block7.totalPoints = 1500; //start with 1500 points (£3)
+				block7.totalPoints = 3 * Params.pointsPerPound; //start with £3
 				block7.showLivePoints=true;
 				block7.showPointLabels = true;
 				block7.totalCircles=Params.totalCircles;
@@ -263,6 +276,8 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					block8.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block8.reminderLockout = true;
+					block8.reminderLockoutTime = Params.lockOutTime;
 				} else {
 					block8.offloadCondition = Names.REMINDERS_NOTALLOWED;
 				}
@@ -270,13 +285,18 @@ public class SequenceHandler {
 				block8.Run();
 				break;
 			case 18:
+				SequenceHandler.Next();
+				/*
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
 					ClickPage.Run(Instructions.Get(5), "Next");
 				} else {
 					SequenceHandler.Next();
 				}
+				*/
 				break;
 			case 19:
+				SequenceHandler.Next();
+				/*
 				IOtask2Block block9 = new IOtask2Block();
 				block9.logDragData=true; //log trial-by-trial data to the database
 				block9.blockNum = 9;
@@ -303,6 +323,7 @@ public class SequenceHandler {
 				}
 				
 				block9.Run();
+				*/
 				break;
 			case 20:
 				IOtask2Block block10 = new IOtask2Block();

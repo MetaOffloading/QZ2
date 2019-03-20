@@ -38,7 +38,9 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.PHP;
+import com.sam.webtasks.basictools.ProgressBar;
 import com.sam.webtasks.client.Names;
+import com.sam.webtasks.client.Params;
 import com.sam.webtasks.client.SequenceHandler;
 import com.sam.webtasks.iotask1.IOtask1BlockContext;
 import com.sam.webtasks.iotask1.IOtask1DisplayParams;
@@ -46,6 +48,8 @@ import com.sam.webtasks.iotask1.IOtask1DisplayParams;
 public class IOtask2RunTrial {
 
 	public static void Run() {
+		ProgressBar.SetProgress(Params.progress++,  (2*Params.nTrials)+1);
+		
 		// get block context
 		IOtask2Block block = IOtask2BlockContext.getContext();
 
@@ -347,6 +351,7 @@ public class IOtask2RunTrial {
 									}
 								} else if (IOtask2BlockContext.getExitFlag() < 4) { // incorrect target response
 									circles[clickedCircle].setFillColor(ColorName.RED);
+									IOtask2BlockContext.decrementPoints();
 								} else { // ongoing response
 									// circles[clickedCircle].setFillColor(ColorName.PURPLE);
 								}

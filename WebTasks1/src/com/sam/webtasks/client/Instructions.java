@@ -50,15 +50,16 @@ public class Instructions {
 					+ "The <b>" + highVal + "</b> circles are worth more than the <b>" + lowVal
 					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
 					+ " you will score <b>10</b> points. But you will only score <b>1</b> point for dragging a <b>" + lowVal + "</b> circle "
-					+ "to the " + lowValLoc + ".<br><br>These points are worth real money. Your payment at the end of the experiment "
-					+ "will be based on how many points you score. You will be paid £1 for every 500 points.<br><br>"
-					+ "This means that you can earn over £10 for this experiment if you remember all the circles. <br><br>Click below to continue.";
+					+ "to the " + lowValLoc + ".<br><br>However, any time you drag an incorrect circle to the left or right, you will lose 1 point.<br><br>"
+							+ "These points are worth real money. Your payment at the end of the experiment "
+					+ "will be based on how many points you score. You will be paid £1 for every " + Params.pointsPerPound + " points.<br><br>"
+					+ "This means that you can earn over £9 for this experiment if you remember all the circles. <br><br>Click below to continue.";
 			break;
 
 		case 4:
 			i = "Now we are going to explain a strategy that can make the task easier.<br><br>"
 					+ "When you see a special circle, you can set a reminder by immediately dragging it to a different part of the box.<br><br> For example, if a circle initially appeared in blue, you could immediately drag it next to the blue (left) side of the box. Then, when you get to that circle in the sequence its location would remind you where it is supposed to go.<br><br>"
-					+ "Please now try the task again, using this strategy to help you.";
+					+ "Each time you use this strategy there will a brief pause before you can continue. Please now try the task again, using this strategy to help you.";
 			break;
 
 		case 5:

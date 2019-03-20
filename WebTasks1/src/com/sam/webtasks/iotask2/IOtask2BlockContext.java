@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.google.gwt.user.client.Window;
 import com.sam.webtasks.client.Names;
+import com.sam.webtasks.client.Params;
 import com.sam.webtasks.client.SequenceHandler;
 
 public class IOtask2BlockContext {
@@ -39,7 +40,7 @@ public class IOtask2BlockContext {
 	public static String getMoneyString() {
 		int nPoints = blockContext.totalPoints;
 		
-		int nPence = (int) Math.ceil( (float) nPoints / 5);
+		int nPence = (int) Math.ceil( (float) (100*nPoints) / Params.pointsPerPound);
 		int nPounds = nPence / 100;
 		int nRemainderPence = nPence % 100;
 		
@@ -189,6 +190,14 @@ public class IOtask2BlockContext {
 				blockContext.totalPoints += blockContext.pointValues[blockContext.exitFlag];
 			} else {
 				blockContext.totalPoints += blockContext.actualPoints;
+			}
+		}
+	}
+	
+	public static void decrementPoints() {
+		if (blockContext.scorePoints) {
+			if (blockContext.variablePoints) {
+				blockContext.totalPoints -= 1;
 			}
 		}
 	}
