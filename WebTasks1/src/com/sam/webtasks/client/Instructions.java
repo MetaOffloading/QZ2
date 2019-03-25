@@ -26,7 +26,8 @@ public class Instructions {
 
 		case 2:
 			i = "Now it will get more difficult. There will be a total of " + Params.totalCircles + " circles, and " + Params.nTargets + " of them will be special ones that should go to one of the coloured sides of the box.<br><br>"
-					+ "Don't worry if you do not remember all of them. That's fine-just try to remember as many as you can.";
+					+ "Don't worry if you do not remember all of them. That's fine-just try to remember as many as you can.<br><br>"
+					+ "You will also see a countdown timer on the screen. Please try to complete the task before the timer runs out.";
 			break;
 			
 		case 3:

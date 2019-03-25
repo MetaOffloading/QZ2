@@ -114,6 +114,8 @@ public class SequenceHandler {
 				block3.nTrials=1;
 				block3.variablePoints = true;
 				block3.pointValues = new int[] {0,1,1,0};
+				block3.countdownTimer = true;
+				
 				block3.Run();
 			    break;			
 			case 8:
@@ -129,6 +131,7 @@ public class SequenceHandler {
 				block4.nTargets=Params.nTargets;
 				block4.nTrials=1;
 				block4.variablePoints = true;
+				block4.countdownTimer = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block4.pointValues = new int[] {0,10,1,0};
@@ -156,6 +159,7 @@ public class SequenceHandler {
 				block5.nTargets=Params.nTargets;
 				block5.nTrials=1;
 				block5.variablePoints = true;
+				block5.countdownTimer = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block5.pointValues = new int[] {0,10,1,0};
@@ -219,7 +223,7 @@ public class SequenceHandler {
 				//add progress bar to screen
 				ProgressBar.Initialise();
 				ProgressBar.Show();
-				ProgressBar.SetProgress(0,  (2*Params.nTrials));
+				ProgressBar.SetProgress(0,  (2*Params.nTrials)-1);
 				Params.progress=0;
 				
 				IOtask2Block block7 = new IOtask2Block();
@@ -232,6 +236,7 @@ public class SequenceHandler {
 				block7.nTargets=Params.nTargets;
 				block7.nTrials=Params.nTrials;
 				block7.variablePoints = true;
+				block7.countdownTimer = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block7.pointValues = new int[] {0,10,1,0};
@@ -267,6 +272,7 @@ public class SequenceHandler {
 				block8.nTargets=Params.nTargets;
 				block8.nTrials=1;
 				block8.variablePoints = true;
+				block8.countdownTimer = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block8.pointValues = new int[] {0,10,1,0};
@@ -336,6 +342,7 @@ public class SequenceHandler {
 				block10.nTargets=Params.nTargets;
 				block10.nTrials=Params.nTrials;
 				block10.variablePoints = true;
+				block10.countdownTimer = true;
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block10.pointValues = new int[] {0,10,1,0};

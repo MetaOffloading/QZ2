@@ -55,6 +55,21 @@ public class IOtask2BlockContext {
 		return (money);
 	}
 	
+	// is the countdown timer running?
+	public static boolean countdownTimer() {
+		return (blockContext.countdownTimer);
+	}
+	
+	public static int countdownTime() {
+		return (blockContext.countdownTime);
+	}
+	
+	public static void countdown() {
+		if (blockContext.countdownTime > 0) {
+			blockContext.countdownTime--;
+		}
+	}
+	
 	// are we logging drag data?
 	public static boolean getLogDragData() {
 		return (blockContext.logDragData);

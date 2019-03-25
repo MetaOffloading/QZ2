@@ -46,6 +46,10 @@ public class IOtask2Block {
 
 	// should post-trial feedback be shown?
 	public boolean showPostTrialFeedback = false;
+	
+	// include a countdowntimer?
+	public boolean countdownTimer = false;
+	public int countdownTime = 20; //number of seconds to start clock at
 
 	// total number of targets to include
 	public int nTargets = 10;

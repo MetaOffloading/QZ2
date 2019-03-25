@@ -35,6 +35,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.PHP;
@@ -48,6 +49,41 @@ import com.sam.webtasks.iotask1.IOtask1DisplayParams;
 public class IOtask2RunTrial {
 
 	public static void Run() {
+		int m = IOtask2BlockContext.countdownTime() / 60;
+		int s = IOtask2BlockContext.countdownTime() % 60;
+		String tLabel;
+		
+		if (s < 10) {
+			tLabel = " "+m+":0"+s;
+		} else {
+			tLabel = " "+m+":"+s;
+		}
+		
+		
+		final Label timerLabel = new Label(tLabel);
+		
+		Timer trialTimer = new Timer() {
+			public void run() {
+				int minutes = IOtask2BlockContext.countdownTime()/60;
+				int seconds = IOtask2BlockContext.countdownTime() % 60;
+				
+				if (seconds < 10) {
+					timerLabel.setText(" "+minutes+":"+"0"+seconds);
+				} else {
+					timerLabel.setText(" "+minutes+":"+seconds);
+				}
+				
+				IOtask2BlockContext.countdown();
+				
+				if (IOtask2BlockContext.countdownTime() == 0) {
+					timerLabel.addStyleName("red");
+					timerLabel.setText("Out of time. Please go faster.");
+					cancel();
+				}
+			}
+		};
+		
+		
 		ProgressBar.SetProgress(Params.progress++,  (2*Params.nTrials)+1);
 		
 		// get block context
@@ -97,6 +133,21 @@ public class IOtask2RunTrial {
 		verticalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		final VerticalPanel lienzoWrapper = new VerticalPanel();
+		
+		// timer display
+		
+		final VerticalPanel timerWrapper = new VerticalPanel();
+		timerWrapper.setWidth(boxSize + "px");
+		timerWrapper.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		timerWrapper.add(timerLabel);
+		timerLabel.setStyleName("livePointsDisplay");
+			
+		if (IOtask2BlockContext.countdownTimer()) {
+			lienzoWrapper.add(timerWrapper);
+			trialTimer.scheduleRepeating(1000);
+		}
+				
+		//points display
 		
 		final VerticalPanel pointsWrapper = new VerticalPanel();
 		pointsWrapper.setWidth(boxSize + "px");
