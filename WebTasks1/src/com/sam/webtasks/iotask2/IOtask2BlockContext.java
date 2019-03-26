@@ -64,6 +64,10 @@ public class IOtask2BlockContext {
 		return (blockContext.countdownTime);
 	}
 	
+	public static void setCountdownTime(int cTime) {
+		blockContext.countdownTime = cTime;
+	}
+	
 	public static void countdown() {
 		if (blockContext.countdownTime > 0) {
 			blockContext.countdownTime--;

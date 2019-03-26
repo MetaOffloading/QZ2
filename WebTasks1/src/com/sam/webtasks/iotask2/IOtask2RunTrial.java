@@ -62,7 +62,7 @@ public class IOtask2RunTrial {
 		
 		final Label timerLabel = new Label(tLabel);
 		
-		Timer trialTimer = new Timer() {
+		final Timer trialTimer = new Timer() {
 			public void run() {
 				int minutes = IOtask2BlockContext.countdownTime()/60;
 				int seconds = IOtask2BlockContext.countdownTime() % 60;
@@ -144,6 +144,8 @@ public class IOtask2RunTrial {
 			
 		if (IOtask2BlockContext.countdownTimer()) {
 			lienzoWrapper.add(timerWrapper);
+			trialTimer.cancel();
+			IOtask2BlockContext.setCountdownTime(Params.countdownTime);
 			trialTimer.scheduleRepeating(1000);
 		}
 				
@@ -604,6 +606,9 @@ public class IOtask2RunTrial {
 						IOtask2BlockContext.incrementNextCircle();
 
 						if (IOtask2BlockContext.getCompletedCircles() == IOtask2BlockContext.getTotalCircles()) { //end of trial
+							trialTimer.cancel();
+							IOtask2BlockContext.setCountdownTime(Params.countdownTime);
+							
 							final Date endTime = new Date();
 							
 							int duration = (int) (endTime.getTime() - trialStart.getTime());
@@ -646,6 +651,9 @@ public class IOtask2RunTrial {
 				if (IOtask2BlockContext.getDoubleClickFlag()) {
 					RootPanel.get().remove(verticalPanel);
 					IOtask2BlockContext.incrementCurrentTrial();
+
+					trialTimer.cancel();
+					IOtask2BlockContext.setCountdownTime(Params.countdownTime);
 					SequenceHandler.Next();
 					return;
 				}

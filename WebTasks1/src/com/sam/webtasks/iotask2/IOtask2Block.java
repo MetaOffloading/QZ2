@@ -7,6 +7,7 @@ import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.Window;
 import com.sam.webtasks.basictools.Counterbalance;
 import com.sam.webtasks.client.Names;
+import com.sam.webtasks.client.Params;
 import com.sam.webtasks.client.SequenceHandler;
 
 public class IOtask2Block {
@@ -49,7 +50,7 @@ public class IOtask2Block {
 	
 	// include a countdowntimer?
 	public boolean countdownTimer = false;
-	public int countdownTime = 20; //number of seconds to start clock at
+	public int countdownTime = Params.countdownTime; //number of seconds to start clock at
 
 	// total number of targets to include
 	public int nTargets = 10;
