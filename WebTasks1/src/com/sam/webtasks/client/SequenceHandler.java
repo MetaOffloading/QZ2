@@ -490,7 +490,11 @@ public class SequenceHandler {
 				if (IOtask2BlockContext.currentTargetValue() > -1) {
 					IOtask2PreTrial.Run();
 				} else { //otherwise just skip to the start of the block
-					SequenceHandler.Next();
+					if (IOtask2BlockContext.getTrialNum() > 0) {
+						ClickPage.Run("Ready?", "Continue");
+					} else {
+						SequenceHandler.Next();
+					}
 				}
 				break;
 			case 4:
