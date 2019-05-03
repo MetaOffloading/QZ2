@@ -6,6 +6,22 @@ public class Instructions {
 
 	public static String Get(int index) {
 		String i = "";
+		
+		String highVal = "", lowVal = "", highValLoc = "", lowValLoc = "";
+
+		if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
+			highVal = "blue";
+			lowVal = "pink";
+
+			highValLoc = "left";
+			lowValLoc = "right";
+		} else {
+			highVal = "pink";
+			lowVal = "blue";
+
+			highValLoc = "right";
+			lowValLoc = "left";
+		}
 
 		switch (index) {
 		case 0:
@@ -31,22 +47,6 @@ public class Instructions {
 			break;
 			
 		case 3:
-			String highVal = "", lowVal = "", highValLoc = "", lowValLoc = "";
-
-			if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
-				highVal = "blue";
-				lowVal = "pink";
-
-				highValLoc = "left";
-				lowValLoc = "right";
-			} else {
-				highVal = "pink";
-				lowVal = "blue";
-
-				highValLoc = "right";
-				lowValLoc = "left";
-			}
-
 			i = "From now on, you will score points every time you drag one of the special circles to the correct location.<br><br>"
 					+ "The <b>" + highVal + "</b> circles are worth more than the <b>" + lowVal
 					+ "</b> circles. Every time you drag a <b>" + highVal + "</b> circle to the " + highValLoc
@@ -56,13 +56,13 @@ public class Instructions {
 					+ "will be based on how many points you score. You will be paid £1 for every " + Params.pointsPerPound + " points.<br><br>"
 					+ "This means that you can earn over £9 for this experiment if you remember all the circles. <br><br>Click below to continue.";
 			break;
-
 		case 4:
-			i = "Now we are going to explain a strategy that can make the task easier.<br><br>"
-					+ "When you see a special circle, you can set a reminder by immediately dragging it to a different part of the box.<br><br> For example, if a circle initially appeared in blue, you could immediately drag it next to the blue (left) side of the box. Then, when you get to that circle in the sequence its location would remind you where it is supposed to go.<br><br>"
-					+ "Each time you use this strategy there will a brief pause before you can continue. Please now try the task again, using this strategy to help you.";
+			i = "Now we are going to explain a strategy that can help you remember the " + highVal + " circles.<br><br>"
+					+ "As soon as you see a " + highVal + " circle, you can set a reminder by immediately dragging it next to the " + highVal + " edge of the box. "
+					+ "Then, when you get to that circle in the sequence its location would remind you where it is supposed to go.<br><br>"
+					+ "You will be able to do this for " + highVal + " circles, but not " + lowVal + " ones. Each time you use this strategy "
+					+ " there will be a brief pause before you can continue.<br><br>Please now try the task again, using this strategy to help you.";
 			break;
-
 		case 5:
 			i = "Now the task will continue as before, and you are free to set reminders by dragging the special circles to the edge of the box if you want to. "
 					+ "However, every time you do this there will be a brief pause before you can continue the task.<br><br>It is completely up to you whether you decide to set reminders or not.";

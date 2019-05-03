@@ -135,9 +135,11 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block4.pointValues = new int[] {0,10,1,0};
+					
 				} else {
 					block4.pointValues = new int[] {0,1,10,0}; 
 				}
+
 				
 				block4.Run();
 				break;
@@ -163,12 +165,14 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block5.pointValues = new int[] {0,10,1,0};
+					block5.moveableSides = new boolean[] {false,true,false,false};
 				} else {
 					block5.pointValues = new int[] {0,1,10,0}; 
+					block5.moveableSides = new boolean[] {false,false,true,false};
 				}
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
-					block5.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block5.offloadCondition = Names.REMINDERS_VARIABLE;
 					block5.reminderLockout = true;
 					block5.reminderLockoutTime = Params.lockOutTime;
 				} else {
@@ -240,12 +244,14 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block7.pointValues = new int[] {0,10,1,0};
+					block7.moveableSides = new boolean[] {false,true,false,false};
 				} else {
 					block7.pointValues = new int[] {0,1,10,0}; 
+					block7.moveableSides = new boolean[] {false,false,true,false};
 				}
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
-					block7.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block7.offloadCondition = Names.REMINDERS_VARIABLE;
 					block7.reminderLockout = true;
 					block7.reminderLockoutTime = Params.lockOutTime;
 				} else {
@@ -276,12 +282,14 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block8.pointValues = new int[] {0,10,1,0};
+					block8.moveableSides = new boolean[] {false,true,false,false};
 				} else {
 					block8.pointValues = new int[] {0,1,10,0}; 
+					block8.moveableSides = new boolean[] {false,false,true,false};
 				}
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
-					block8.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block8.offloadCondition = Names.REMINDERS_VARIABLE;
 					block8.reminderLockout = true;
 					block8.reminderLockoutTime = Params.lockOutTime;
 				} else {
@@ -346,12 +354,14 @@ public class SequenceHandler {
 				
 				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
 					block10.pointValues = new int[] {0,10,1,0};
+					block10.moveableSides = new boolean[] {false,true,false,false};
 				} else {
 					block10.pointValues = new int[] {0,1,10,0}; 
+					block10.moveableSides = new boolean[] {false,false,true,false};
 				}
 				
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
-					block10.offloadCondition = Names.REMINDERS_OPTIONAL;
+					block10.offloadCondition = Names.REMINDERS_VARIABLE;
 					block10.reminderLockout = true;
 					block10.reminderLockoutTime = Params.lockOutTime;
 				} else {

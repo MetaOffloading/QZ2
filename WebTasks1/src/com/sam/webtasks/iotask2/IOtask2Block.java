@@ -34,6 +34,10 @@ public class IOtask2Block {
 	// allow any circle to be moved? NB this will be overridden by participants'
 	// choice to use reminders or not, if this choice is presented
 	public int offloadCondition = Names.REMINDERS_OPTIONAL;
+	
+	// if offloadCondition is set to REMINDERS_VARIABLE, separately set whether
+	// circles that should go to bottom, left, right, and top are moveable
+	public boolean[] moveableSides = new boolean[4];
 
 	// what block number is this? useful to store alongside performance data
 	public int blockNum = 1;

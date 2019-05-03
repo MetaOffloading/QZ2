@@ -125,6 +125,10 @@ public class IOtask2BlockContext {
 		return(blockContext.offloadCondition);
 	}
 	
+	public static boolean getMoveableStatus(int side) {
+		return(blockContext.moveableSides[side]);
+	}
+	
 	//instruction time
 	public static int getInstructionTime() {
 		return(blockContext.instructionTime);

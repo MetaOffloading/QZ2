@@ -11,10 +11,10 @@ public class SessionInfo {
 	public static boolean checkID=false; //should we check the worker ID? if not, it defaults to "Atest"
 	
 	//what is the name for this experiment?
-	public static String experimentCode="QZ1";
+	public static String experimentCode="QZ2";
 	
 	//which version of the experiment is this?
-	public static int experimentVersion=24; 
+	public static int experimentVersion=2; 
 	
 	//what is the minimum permitted screen size in pixels?
 	//if the screen is smaller than this the participant will be asked

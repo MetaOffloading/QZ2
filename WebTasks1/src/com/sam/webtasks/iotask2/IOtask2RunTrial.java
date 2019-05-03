@@ -542,6 +542,12 @@ public class IOtask2RunTrial {
 									if (IOtask2BlockContext.getOffloadCondition() == Names.REMINDERS_NOTALLOWED) {
 										circleGroup[clickedCircle].setDraggable(false);
 									}
+									
+									if (IOtask2BlockContext.getOffloadCondition() == Names.REMINDERS_VARIABLE) {
+										if (!IOtask2BlockContext.getMoveableStatus(targetStatus)) {
+											circleGroup[clickedCircle].setDraggable(false);
+										}
+									}
 
 									AnimationProperties grow = new AnimationProperties();
 									grow.push(Properties.SCALE(1));

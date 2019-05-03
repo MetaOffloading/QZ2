@@ -6,6 +6,7 @@ public class Names {
 	public final static int REMINDERS_OPTIONAL=1;   //optional to use reminders
 	public final static int REMINDERS_MANDATORY_ANYCIRCLE=2; //mandatory to set reminders, but it works to move any circles, not just the specified targets
 	public final static int REMINDERS_MANDATORY_TARGETONLY=3;//mandatory to set reminders for the specified targets
+	public final static int REMINDERS_VARIABLE=4;  //can set reminders for circles associated with some target direction but not others
 		
 	//Gender
 	public final static int GENDER_MALE=0;
