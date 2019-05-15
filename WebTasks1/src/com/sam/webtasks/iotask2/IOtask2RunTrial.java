@@ -477,9 +477,18 @@ public class IOtask2RunTrial {
 					//TODO this is where to get another date if we are calculating drag duration
 
 					IOtask2BlockContext.setFlashFlag(false);
-
-					//do the reminder lockout if applicable
+					
+					//do the reminder lockout if applicable	
 					if (IOtask2BlockContext.getReminderLockout()) {
+						//get the drag status for each circle so that it can be restored after the lock-out
+						final boolean[] dragStatus = new boolean[IOtask2BlockContext.getnCircles()];	
+						
+						for (int c = 0; c < IOtask2BlockContext.getnCircles(); c++) {
+							dragStatus[c] = circleGroup[c].isDraggable();
+						}
+						
+						
+						
 						if ((IOtask2BlockContext.getExitFlag() == 0) & (clickedCircle != IOtask2BlockContext.getNextCircle())) {
 							for (int c = 0; c < IOtask2BlockContext.getnCircles(); c++) {
 								circleGroup[c].setDraggable(false);
@@ -490,8 +499,8 @@ public class IOtask2RunTrial {
 
 							new Timer() {
 								public void run() {
-									for (int c = 0; c < IOtask2BlockContext.getnCircles(); c++) {
-										circleGroup[c].setDraggable(true);
+									for (int c = 0; c < IOtask2BlockContext.getnCircles(); c++) {		
+										circleGroup[c].setDraggable(dragStatus[c]);
 										circles[c].setAlpha(1);
 									}
 
