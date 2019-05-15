@@ -181,49 +181,10 @@ public class SequenceHandler {
 				
 				block5.Run();
 				break;
-			case 12:
-				SequenceHandler.Next();
-				
-				/*if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
-					ClickPage.Run(Instructions.Get(5), "Next");
-				} else {
-					SequenceHandler.Next();
-				}*/
-				break;
-			case 13:
-				SequenceHandler.Next();
-				/*
-				IOtask2Block block6 = new IOtask2Block();
-				block6.logDragData=true; //log trial-by-trial data to the database
-				block6.blockNum = 6;
-				block6.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
-				block6.showLivePoints=true;
-				block6.showPointLabels = true;
-				block6.totalCircles=Params.totalCircles;
-				block6.nTargets=Params.nTargets;
-				block6.nTrials=1;
-				block6.variablePoints = true;
-				
-				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
-					block6.pointValues = new int[] {0,10,1,0};
-				} else {
-					block6.pointValues = new int[] {0,1,10,0}; 
-				}
-				
-				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
-					block6.offloadCondition = Names.REMINDERS_OPTIONAL;
-					block6.reminderLockout = true;
-					block6.reminderLockoutTime = Params.lockOutTime;
-				} else {
-					block6.offloadCondition = Names.REMINDERS_NOTALLOWED;
-				}
-				
-				block6.Run(); */
-				break;
-			case 14:			
+			case 12:			
 				ClickPage.Run(Instructions.Get(6), "Next");
 				break;
-			case 15:
+			case 13:
 				//add progress bar to screen
 				ProgressBar.Initialise();
 				ProgressBar.Show();
@@ -260,14 +221,14 @@ public class SequenceHandler {
 				
 				block7.Run();
 				break;
-			case 16:
+			case 14:
 				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_FIRST) {
 					ClickPage.Run(Instructions.Get(7), "Next");
 				} else {
 					ClickPage.Run(Instructions.Get(4), "Next");
 				}
 				break;
-			case 17:
+			case 15:
 				IOtask2Block block8 = new IOtask2Block();
 				block8.logDragData=true; //log trial-by-trial data to the database
 				block8.blockNum = 8;
@@ -298,48 +259,7 @@ public class SequenceHandler {
 				
 				block8.Run();
 				break;
-			case 18:
-				SequenceHandler.Next();
-				/*
-				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
-					ClickPage.Run(Instructions.Get(5), "Next");
-				} else {
-					SequenceHandler.Next();
-				}
-				*/
-				break;
-			case 19:
-				SequenceHandler.Next();
-				/*
-				IOtask2Block block9 = new IOtask2Block();
-				block9.logDragData=true; //log trial-by-trial data to the database
-				block9.blockNum = 9;
-				block9.totalPoints = IOtask2BlockContext.getTotalPoints(); //carry over points from previous block
-				block9.showLivePoints=true;
-				block9.showPointLabels = true;
-				block9.totalCircles=Params.totalCircles;
-				block9.nTargets=Params.nTargets;
-				block9.nTrials=1;
-				block9.variablePoints = true;
-				
-				if (Counterbalance.getFactorLevel("colourMeaning") == Names.BLUE_HIGHVAL) {
-					block9.pointValues = new int[] {0,10,1,0};
-				} else {
-					block9.pointValues = new int[] {0,1,10,0}; 
-				}
-				
-				if (Counterbalance.getFactorLevel("conditionOrder") == Names.OFFLOAD_SECOND) {
-					block9.offloadCondition = Names.REMINDERS_OPTIONAL;
-					block9.reminderLockout = true;
-					block9.reminderLockoutTime = Params.lockOutTime;
-				} else {
-					block9.offloadCondition = Names.REMINDERS_NOTALLOWED;
-				}
-				
-				block9.Run();
-				*/
-				break;
-			case 20:
+			case 16:
 				IOtask2Block block10 = new IOtask2Block();
 				block10.logDragData=true; //log trial-by-trial data to the database
 				block10.blockNum = 10;
@@ -370,7 +290,7 @@ public class SequenceHandler {
 				
 				block10.Run();
 				break;
-			case 21:
+			case 17:
 				String data = Counterbalance.getFactorLevel("colourMeaning") + ",";
 				data = data + Counterbalance.getFactorLevel("conditionOrder") + ",";
 				data = data + IOtask2BlockContext.getMoneyString() + ",";
@@ -378,12 +298,12 @@ public class SequenceHandler {
 
 				PHP.logData("finish", data, true);
 				break;
-			case 22:
+			case 18:
 				Finish.Run();
 				break;
 				   
 			}
-			break;
+			break; 
 		
 
 		/********************************************/
